@@ -1,0 +1,16 @@
+<mat-form-field class="motion-form-field" style="width: 80%">
+  <input type="text" matInput [placeholder]="formControlMetaData.placeHolder"
+         [formControl]="airportLocationFormControl"
+         [matAutocomplete]="auto" [errorStateMatcher]="matcher">
+  <mat-autocomplete #auto="matAutocomplete"
+                    [displayWith]="displayFn"
+                    (optionSelected)="onSelection()">
+    <mat-option *ngFor="let location of filteredOptions | async" [value]="location">
+      {{ location.description}}
+    </mat-option>
+  </mat-autocomplete>
+
+  <mat-error *ngIf="airportLocationFormControl.errors?.required">
+    {{formControlMetaData.requiredErrorMessage}}
+  </mat-error>
+</mat-form-field>

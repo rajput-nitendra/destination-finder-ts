@@ -1,0 +1,28 @@
+<mat-card>
+  <mat-card-content>
+    <form>
+      <h2 style="font-weight: bold">Check flight fare</h2>
+      <app-airport-selection
+        [formControlMetaData]="originFormControlMetaData"
+        (selectedValue)="originSelectedValue($event)">
+      </app-airport-selection>
+      <app-airport-selection
+        [formControlMetaData]="destinationFormControlMetaData"
+        (selectedValue)="destinationSelectedValue($event)">
+      </app-airport-selection>
+
+      <div style="margin: 2em;">
+        <mat-spinner-button
+          [options]="spinnerButtonOptions"
+          (btnClick)="calculateFare()">
+        </mat-spinner-button>
+      </div>
+
+      <div *ngIf="fare?.amount" style="margin-top: 2em">
+        <h3 style="font-weight: bold">
+          Amount:  {{fare.amount|currency:fare.currency:'symbol':'3.2-2' }}
+        </h3>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
