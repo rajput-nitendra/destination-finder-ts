@@ -20,7 +20,6 @@ export class LandingPageComponent implements OnInit {
   destinationLocation: AirportLocation;
   fare: Fare;
 
-  fareAmount = '123432';
   spinnerButtonOptions: MatProgressButtonOptions = {
     active: false,
     text: 'Calculate fare',

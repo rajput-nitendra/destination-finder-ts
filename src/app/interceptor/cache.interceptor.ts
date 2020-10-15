@@ -18,6 +18,11 @@ export class CacheInterceptor implements HttpInterceptor {
       return next.handle(req);
     }
 
+    // don't cache fare calculate api call
+    if (req.url.indexOf('/fares') !== -1) {
+      return next.handle(req);
+    }
+
     // attempt to retrieve a cached response
     const cachedResponse: HttpResponse<any> = this.cacheService.get(req.url);
 
